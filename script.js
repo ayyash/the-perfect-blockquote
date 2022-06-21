@@ -1,5 +1,6 @@
 window.onload = init;
 
+
 function init() {
   document.getElementById('toggle-tools').onclick = (e) => {
     const tools = document.getElementById('tools');
@@ -9,128 +10,90 @@ function init() {
       tools.style.display = 'none';
     }
   };
-  // find steppers and change vars?
-  const sizeRange = document.getElementById('fontSize');
-  const lineHeightRange = document.getElementById('lineHeight');
-  const fontSizeValue = document.getElementById('fontSizeValue');
-  const lineHeightValue = document.getElementById('lineHeightValue');
 
-  sizeRange.onchange = (e) => {
+  document.getElementById('fontSize').onchange = (e) => {
     const size = parseFloat(e.target.value * 100).toFixed(2);
-    fontSizeValue.innerText = size;
+    document.getElementById('fontSizeValue').innerText = size;
 
     document.documentElement.style.setProperty('--font-size', `${size}%`);
     document.documentElement.style.setProperty('--scale', e.target.value);
   };
 
-  lineHeightRange.onchange = (e) => {
-    lineHeightValue.innerText = e.target.value;
+  document.getElementById('lineHeight').onchange = (e) => {
+    document.getElementById('lineHeightValue').innerText = e.target.value;
 
-    document.documentElement.style.setProperty('--lineHeight', e.target.value);
+    document.documentElement.style.setProperty('--line-height', e.target.value);
   };
 
-  const leadingLH = document.getElementById('leadingLineHeight');
-  const trailingLH = document.getElementById('trailingLineHeight');
-  const unsetLH = document.getElementById('unsetLineHeight');
-
-  leadingLH.onclick = (e) => {
+  document.getElementById('leadingLineHeight').onclick = (e) => {
     const value = e.target.checked ? 1 : 0;
-    document.documentElement.style.setProperty('--leadingLineHeight', value);
+    document.documentElement.style.setProperty('--leading-line-height', value);
   };
-  trailingLH.onclick = (e) => {
+  document.getElementById('trailingLineHeight').onclick = (e) => {
     const value = e.target.checked ? 1 : 0;
-    document.documentElement.style.setProperty('--trailingLineHeight', value);
+    document.documentElement.style.setProperty('--trailing-line-height', value);
   };
-  unsetLH.onclick = (e) => {
+  document.getElementById('unsetLineHeight').onclick = (e) => {
     // remove line height temp
-    document.documentElement.style.setProperty('--trailingLineHeight', 'unset');
-    document.documentElement.style.setProperty('--leadingLineHeight', 'unset');
+    document.documentElement.style.setProperty('--trailing-line-height', 'unset');
+    document.documentElement.style.setProperty('--leading-line-height', 'unset');
+  }
+
+  document.getElementById('changeFont').onchange = (e) => {
+    document.documentElement.style.setProperty('--font-family', e.target.value);
+
   };
 
-  const changeFont = document.getElementById('changeFont');
-  changeFont.onchange = (e) => {
-    const value = e.target.value;
-    document.body.className = 'font-' + value;
+  document.getElementById('changeLVAlign').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-vertical-align', e.target.value);
+  };
+  document.getElementById('changeTVAlign').onchange = (e) => {
+    document.documentElement.style.setProperty('--trailing-vertical-align', e.target.value);
   };
 
-  const changeLVAlign = document.getElementById('changeLVAlign');
-  const changeTVAlign = document.getElementById('changeTVAlign');
-  const lva = document.getElementById('lva');
-  const tva = document.getElementById('tva');
-
-  changeLVAlign.onchange = (e) => {
-    document.documentElement.style.setProperty(
-      '--leadingVerticalAlign',
-      e.target.value
-    );
+  document.getElementById('lva').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-vertical-align', e.target.value + 'rem');
   };
-  changeTVAlign.onchange = (e) => {
-    document.documentElement.style.setProperty(
-      '--trailingVerticalAlign',
-      e.target.value
-    );
+  document.getElementById('tva').onchange = (e) => {
+    document.documentElement.style.setProperty('--trailing-vertical-align', e.target.value + 'rem');
   };
 
-  lva.onchange = (e) => {
-    document.documentElement.style.setProperty(
-      '--leadingVerticalAlign',
-      e.target.value + 'rem'
-    );
+  document.getElementById('changeHOrigin').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-horigin', e.target.value);
   };
-  tva.onchange = (e) => {
-    document.documentElement.style.setProperty(
-      '--trailingVerticalAlign',
-      e.target.value + 'rem'
-    );
+  document.getElementById('ho').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-horigin', e.target.value + 'rem');
   };
-
-  const changeHOrigin = document.getElementById('changeHOrigin');
-  const changeVOrigin = document.getElementById('changeVOrigin');
-  const horigin = document.getElementById('ho');
-  const vorigin = document.getElementById('vo');
-  const horiginPercent = document.getElementById('perho');
-  const voriginPercent = document.getElementById('pervo');
-
-  changeHOrigin.onchange = (e) => {
-    document.documentElement.style.setProperty('--ho', e.target.value);
+  document.getElementById('perho').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-horigin', e.target.value + '%');
   };
-  horigin.onchange = (e) => {
-    document.documentElement.style.setProperty('--ho', e.target.value + 'rem');
+  document.getElementById('changeVOrigin').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-vorigin', e.target.value);
   };
-  horiginPercent.onchange = (e) => {
-    document.documentElement.style.setProperty('--ho', e.target.value + '%');
+  document.getElementById('vo').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-vorigin', e.target.value + 'rem');
   };
-  changeVOrigin.onchange = (e) => {
-    document.documentElement.style.setProperty('--vo', e.target.value);
-  };
-  vorigin.onchange = (e) => {
-    document.documentElement.style.setProperty('--vo', e.target.value + 'rem');
-  };
-  voriginPercent.onchange = (e) => {
-    document.documentElement.style.setProperty('--vo', e.target.value + '%');
+  document.getElementById('pervo').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-vorigin', e.target.value + '%');
   };
 
-  const toggleCite = document.getElementById('toggleCite');
-  toggleCite.onclick = (e) => {
+
+  document.getElementById('toggleCite').onclick = (e) => {
     const value = e.target.checked ? 'block' : 'none';
     document.documentElement.style.setProperty('--toggle-cite', value);
   };
 
-  // leadingIndent, leadingHangingMargin
-  const leadingIndent = document.getElementById('leadingIndent');
-  const leadingHangingMargin = document.getElementById('leadingHangingMargin');
-  leadingIndent.onchange = (e) => {
-    document.documentElement.style.setProperty(
-      '--leadingIndent',
-      e.target.value + 'rem'
-    );
+
+  document.getElementById('leadingIndent').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-indent', e.target.value + 'rem');
   };
-  leadingHangingMargin.onchange = (e) => {
-    document.documentElement.style.setProperty(
-      '--leadingHangingMargin',
-      e.target.value + 'rem'
-    );
-  };
+
+  document.getElementById('ltop').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-top', e.target.value + 'rem');
+  }
+  document.getElementById('lleft').onchange = (e) => {
+    document.documentElement.style.setProperty('--leading-left', e.target.value + 'rem');
+  }
 
   document.getElementById('toggleVanity').onclick = (e) => {
     if (e.target.checked) {
@@ -138,5 +101,12 @@ function init() {
     } else {
       document.body.classList.remove('makevanity');
     }
-  };
+  }
+
+  // extra code, clean up spaced around blockquotes to avoid skipping lines
+  document.querySelectorAll('blockquote').forEach((blockquote) => {
+    // trip last space
+    blockquote.innerHTML = blockquote.innerHTML.trim(' ');
+
+  });
 }
