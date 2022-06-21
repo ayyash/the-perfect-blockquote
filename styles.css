@@ -1,0 +1,173 @@
+html {
+  font-size: 62.5%;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Bitter', serif;
+  font-size: 1.4rem;
+  padding-bottom: 5rem;
+  counter-reset: method;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+h5:before {
+  counter-increment: method;
+  content: counter(method) ': ';
+}
+
+.row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex-basis: 47%;
+}
+
+div {
+  margin: 2rem 0;
+}
+
+.classic {
+  line-height: var(--lineHeight, 1.5);
+}
+
+.classic blockquote {
+  margin: 0;
+  position: relative;
+}
+
+.classic blockquote:before {
+  content: '\201C';
+  line-height: var(--leadingLineHeight, unset);
+  vertical-align: var(--leadingVerticalAlign, unset);
+}
+
+.classic blockquote:after {
+  content: '\201D';
+  line-height: var(--trailingLineHeight, unset);
+  vertical-align: var(--trailingVerticalAlign, unset);
+  font-size: var(--font-size, 100%);
+  /* margin-left: 0; */
+}
+
+/* solution with text indent */
+.classicA blockquote {
+  margin-left: var(--leadingIndent, 1rem);
+}
+
+.classicA blockquote:before {
+  text-indent: calc(var(--leadingIndent, 1rem) * -1);
+  display: inline-block;
+}
+
+/* solution with position */
+.classicB blockquote {
+  padding-left: var(--leadingHangingMargin, 1rem);
+}
+
+.classicB blockquote:before {
+  position: absolute;
+  left: 0;
+}
+
+/* scale fontsize */
+.fontSize blockquote:before {
+  font-size: var(--font-size, 100%);
+}
+
+/* scale by transform */
+.scale blockquote:before {
+  transform: scale(var(--scale, 1));
+  transform-origin: var(--ho, unset) var(--vo, unset);
+}
+
+.font-A blockquote:before,
+.font-A blockquote:after {
+  font-family: 'Newsreader';
+}
+
+.font-B blockquote:before,
+.font-B blockquote:after {
+  font-family: 'Literata';
+}
+
+/* to test with cite */
+cite {
+  display: var(--toggle-cite, none);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+cite:before {
+  content: '\2014';
+  font-family: Literata;
+}
+
+.classicA cite {
+  /* same amount as indentation */
+  margin-left: var(--leadingIndent, 1rem);
+}
+
+.classicB cite {
+  /* same amount as indentation */
+  margin-left: var(--leadingHangingMargin, 1rem);
+}
+
+.makevanity blockquote {
+  font-size: 150%;
+  font-style: italic;
+  margin-left: 0 !important;
+  padding-left: 0;
+}
+
+.makevanity blockquote:before,
+.makevanity blockquote:after {
+  font-style: normal;
+}
+
+.makevanity .classicB blockquote:before {
+  margin-left: calc(var(--leadingIndent, 1rem) * -1);
+}
+
+.makevanity cite {
+  margin-left: 0;
+  font-size: 120%;
+  font-style: normal;
+}
+
+#tools {
+  width: 280px;
+  z-index: 1000;
+  background-color: white;
+  border-right: 1px solid black;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  padding-top: 5rem;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+#toggle-tools {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 150%;
+  z-index: 1100;
+  cursor: pointer;
+}
