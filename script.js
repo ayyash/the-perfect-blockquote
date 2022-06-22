@@ -105,7 +105,7 @@ function init() {
 
   // extra code, clean up spaced around blockquotes to avoid skipping lines
   document.querySelectorAll('blockquote').forEach((blockquote) => {
-    // trip last space
+    // trip spaces
     blockquote.innerHTML = blockquote.innerHTML.trim(' ');
 
   });
