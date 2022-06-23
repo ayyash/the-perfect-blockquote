@@ -54,7 +54,7 @@ div {
 /* here is what matters */
 
 :root {
-  --quote-font: 'Newsreader';
+  --quote-font: inherit;
   --line-height: 1.5;
   --body-font-size: 1.4;
 }
@@ -66,7 +66,7 @@ div {
 /*The best option*/
 .quoted {
   --font-size: 150%;
-  --vertical-align: 0;
+  --vertical-align: unset;
   --opening-indent: unset;
 
 }
@@ -108,6 +108,12 @@ div {
 
 .vanity {
   --opening-indent: 1.3rem;
+  /* this is tempting but not so practical */
+  /* --vertical-align-multiplier: 1.5; */
+
+  /* better have an overide */
+  --vertical-align: unset;
+  
   /* this should be a rare case */
   line-height: calc(var(--line-height) * 1);
 }
@@ -120,6 +126,8 @@ div {
 .vanity blockquote:before,
 .vanity blockquote:after {
   font-style: normal;
+  /* using the tempting-but-not-so-practical variable */
+  /* vertical-align: calc(var(--vertical-align, unset) * var(--vertical-align-multiplier)); */
 }
 
 .vanity cite {

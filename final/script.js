@@ -52,6 +52,14 @@ function init() {
   };
 
 
+  document.getElementById('changeVVAlign').onchange = (e) => {
+    document.querySelector('.vanity').style.setProperty('--vertical-align', e.target.value);
+  };
+
+  document.getElementById('vva').onchange = (e) => {
+    document.querySelector('.vanity').style.setProperty('--vertical-align', e.target.value + 'rem');
+  };
+
   document.getElementById('openingIndent').onchange = (e) => {
     document.querySelector('.quoted').style.setProperty('--opening-indent', e.target.value + 'rem');
   };
