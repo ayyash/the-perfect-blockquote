@@ -109,7 +109,7 @@ div {
 .vanity {
   /* this is tempting but not so practical */
   /* --vertical-align-multiplier: 1.5; */
-  /* --openinig-indent-adder: 0.3rem; */
+  /* --opening-indent-adder: 0.3rem; */
 
   --opening-indent: 1.3rem;
 
@@ -127,7 +127,7 @@ div {
 
 /* using the tempting-but-not-so-practical variable */
 /* .vanity blockquote:before {
-  text-indent: calc((var(--opening-indent) + var(--openinig-indent-adder) )* -1);
+  text-indent: calc((var(--opening-indent) + var(--opening-indent-adder) )* -1);
 } */
 
 .vanity blockquote:before,
