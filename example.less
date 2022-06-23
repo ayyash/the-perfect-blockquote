@@ -5,48 +5,45 @@ html {
   box-sizing: border-box;
 }
 body {
+	--quote-font: 'Newsreader';
   font-family: 'Bitter', serif;
   font-size: 1.4rem;
   line-height: 1.3;
+
 }
 .container {
   max-width: 500px;
   margin: 0 auto;
 }
 div {
+	
   margin-block: 3rem;
 }
 
-
-:root {
-  --font-family: 'Newsreader';
-  // kill a bug in LESS
-  color: inherit;
-}
 /*The best option*/
 .quoted {
 	--line-height: 1.3;
 	--font-size: 150%;
-	--vertical-align: -0.1rem;
-	--leading-indent: 0.9rem;
-	--font-family: 'Newsreader';
+	--vertical-align: -0.4rem;
+	--opening-indent: 0.9rem;
+
  
 	line-height: var(--line-height, 1.5);
 
 	blockquote {
 		margin: 0;
 		position: relative;
-		margin-left: var(--leading-indent, 1rem);
+		margin-left: var(--opening-indent, 1rem);
 
     &:before, &:after {
-      font-family: var(--font-family);
+      font-family: var(--quote-font);
 			line-height:0;
 			vertical-align: var(--vertical-align, unset);
 			font-size: var(--font-size, 100%);
     }
 		&:before {
 			content: '\201C';
-			text-indent: calc(var(--leading-indent, 1rem) * -1);
+			text-indent: calc(var(--opening-indent, 1rem) * -1);
 			display: inline-block;
 			
 		}
@@ -60,21 +57,21 @@ div {
 		display: block;
 		margin-top: 1rem;
 		font-style: italic;
-		margin-left: var(--leading-indent, 1rem);
+		margin-left: var(--opening-indent, 1rem);
 		&:before {
 			content: '\2014';
 			/*I'm cheating here, ths will be part of my own new font*/
 			font-family: 'Literata';
 		}
 		&:after {
-			margin-left: var(--leading-indent, 1rem);
+			margin-left: var(--opening-indent, 1rem);
 		}
 	}
 }
 
 .vanity {
   // because of increase in blockquote size, i need more indentation
-  --leading-indent: 1.3rem;
+  --opening-indent: 1.3rem;
 
   // kill a bug in less
   color: inherit;
@@ -95,4 +92,13 @@ div {
 		font-size: 120%;
 		font-style: normal;
 	}	
+}
+
+q:before {
+	content: '\2018';
+  font-family: var(--quote-font);
+}
+q:after {
+	content: '\2019';
+  font-family: var(--quote-font);
 }
