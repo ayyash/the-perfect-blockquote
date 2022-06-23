@@ -4,31 +4,40 @@ html {
 * {
   box-sizing: border-box;
 }
-body {
-	--quote-font: 'Newsreader';
-  font-family: 'Bitter', serif;
-  font-size: 1.4rem;
-  line-height: 1.3;
 
-}
 .container {
   max-width: 500px;
   margin: 0 auto;
 }
 div {
-	
   margin-block: 3rem;
+}
+:root {
+	--quote-font: 'Newsreader';
+	--line-height: 1.3;
+
+	// kill a LESS bug
+	color: inherit;
+}
+
+body {
+	
+  font-family: 'Bitter', serif;
+  font-size: 1.4rem;
+  line-height: var(--line-height);
+
 }
 
 /*The best option*/
 .quoted {
-	--line-height: 1.3;
+
 	--font-size: 150%;
 	--vertical-align: -0.4rem;
 	--opening-indent: 0.9rem;
 
  
-	line-height: var(--line-height, 1.5);
+	// this can be inherited
+	line-height: var(--line-height, inherit);
 
 	blockquote {
 		margin: 0;
@@ -60,8 +69,7 @@ div {
 		margin-left: var(--opening-indent, 1rem);
 		&:before {
 			content: '\2014';
-			/*I'm cheating here, ths will be part of my own new font*/
-			font-family: 'Literata';
+			font-family: var(--quote-font);
 		}
 		&:after {
 			margin-left: var(--opening-indent, 1rem);
@@ -72,6 +80,9 @@ div {
 .vanity {
   // because of increase in blockquote size, i need more indentation
   --opening-indent: 1.3rem;
+
+	// this is optional and not quite recomendded
+	// line-height: calc(var(--line-height) * 1.8);
 
   // kill a bug in less
   color: inherit;
