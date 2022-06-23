@@ -11,10 +11,20 @@ function init() {
     }
   };
 
+  const rules = document.styleSheets[0].cssRules;
+  let quoteRule;
+  for(let i =0; i < rules.length; i++) {
+    if (rules[i].selectorText === '.quoted') {
+      quoteRule = rules[i];
+    }
+  }
+
+
   document.getElementById('fontSize').onchange = (e) => {
     const size = parseFloat(e.target.value * 100).toFixed(2);
     document.getElementById('fontSizeValue').innerText = size;
-    document.documentElement.style.setProperty('--font-size', `${size}%`);
+    quoteRule.style.setProperty('--font-size', `${size}%`);
+
   };
   document.getElementById('bodyFontSize').onchange = (e) => {
     document.getElementById('bodyFontSizeValue').innerText = e.target.value;
@@ -34,22 +44,21 @@ function init() {
   };
 
   document.getElementById('changeVAlign').onchange = (e) => {
-    document.documentElement.style.setProperty('--vertical-align', e.target.value);
+    quoteRule.style.setProperty('--vertical-align', e.target.value);
   };
 
   document.getElementById('va').onchange = (e) => {
-    document.documentElement.style.setProperty('--vertical-align', e.target.value + 'rem');
-  };
-
-  document.getElementById('toggleCite').onclick = (e) => {
-    const value = e.target.checked ? 'block' : 'none';
-    document.documentElement.style.setProperty('--toggle-cite', value);
+    quoteRule.style.setProperty('--vertical-align', e.target.value + 'rem');
   };
 
 
-  document.getElementById('leadingIndent').onchange = (e) => {
-    document.documentElement.style.setProperty('--openinig-indent', e.target.value + 'rem');
+  document.getElementById('openingIndent').onchange = (e) => {
+    document.querySelector('.quoted').style.setProperty('--opening-indent', e.target.value + 'rem');
   };
+  document.getElementById('vanityOpeningIndent').onchange = (e) => {
+    document.querySelector('.vanity').style.setProperty('--opening-indent', e.target.value + 'rem');
+  };
+
 
   // extra code, clean up spaced around blockquotes to avoid skipping lines
   document.querySelectorAll('blockquote').forEach((blockquote) => {
