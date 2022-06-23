@@ -18,6 +18,12 @@ function init() {
       quoteRule = rules[i];
     }
   }
+  let vanityRule;
+  for(let i =0; i < rules.length; i++) {
+    if (rules[i].selectorText === '.vanity') {
+      vanityRule = rules[i];
+    }
+  }
 
 
   document.getElementById('fontSize').onchange = (e) => {
@@ -53,18 +59,18 @@ function init() {
 
 
   document.getElementById('changeVVAlign').onchange = (e) => {
-    document.querySelector('.vanity').style.setProperty('--vertical-align', e.target.value);
+    vanityRule.style.setProperty('--vertical-align', e.target.value);
   };
 
   document.getElementById('vva').onchange = (e) => {
-    document.querySelector('.vanity').style.setProperty('--vertical-align', e.target.value + 'rem');
+    vanityRule.style.setProperty('--vertical-align', e.target.value + 'rem');
   };
 
   document.getElementById('openingIndent').onchange = (e) => {
-    document.querySelector('.quoted').style.setProperty('--opening-indent', e.target.value + 'rem');
+    quoteRule.style.setProperty('--opening-indent', e.target.value + 'rem');
   };
   document.getElementById('vanityOpeningIndent').onchange = (e) => {
-    document.querySelector('.vanity').style.setProperty('--opening-indent', e.target.value + 'rem');
+    vanityRule.style.setProperty('--opening-indent', e.target.value + 'rem');
   };
 
 
