@@ -67,7 +67,7 @@ div {
 .quoted {
   --font-size: 150%;
   --vertical-align: unset;
-  --opening-indent: unset;
+  --opening-indent: 0.9rem;
 
 }
 .quoted blockquote {
@@ -107,9 +107,11 @@ div {
 }
 
 .vanity {
-  --opening-indent: 1.3rem;
   /* this is tempting but not so practical */
   /* --vertical-align-multiplier: 1.5; */
+  /* --openinig-indent-adder: 0.3rem; */
+
+  --opening-indent: 1.3rem;
 
   /* better have an overide */
   --vertical-align: unset;
@@ -123,6 +125,12 @@ div {
   margin-left: 0 !important;
   padding-left: 0;
 }
+
+/* using the tempting-but-not-so-practical variable */
+/* .vanity blockquote:before {
+  text-indent: calc((var(--opening-indent) + var(--openinig-indent-adder) )* -1);
+} */
+
 .vanity blockquote:before,
 .vanity blockquote:after {
   font-style: normal;
