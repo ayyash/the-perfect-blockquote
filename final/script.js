@@ -29,7 +29,7 @@ function init() {
 
  
   document.getElementById('changeFont').onchange = (e) => {
-    document.documentElement.style.setProperty('--font-family', e.target.value);
+    document.documentElement.style.setProperty('--quote-font', e.target.value);
 
   };
 
@@ -48,7 +48,7 @@ function init() {
 
 
   document.getElementById('leadingIndent').onchange = (e) => {
-    document.documentElement.style.setProperty('--leading-indent', e.target.value + 'rem');
+    document.documentElement.style.setProperty('--openinig-indent', e.target.value + 'rem');
   };
 
   // extra code, clean up spaced around blockquotes to avoid skipping lines
