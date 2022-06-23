@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
 
-    
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,16 +18,39 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Literata:wght@400;700&display=swap&text=“”‘’—"
       rel="stylesheet"
     />
-
-    
-
-    
   </head>
 
   <body>
     <div id="toggle-tools">X</div>
     <div id="tools">
-
+      <div>
+        Body font size <br />
+        <input
+          type="range"
+          min="1"
+          max="5"
+          value="1.4"
+          step="0.1"
+          style="width: 90%"
+          id="bodyFontSize"
+        />
+        <br />
+        <span id="bodyFontSizeValue">1.4</span>rem
+      </div>
+      <div>
+        Line height of text <br />
+        <input
+          type="range"
+          min="1"
+          max="2.5"
+          value="1.5"
+          step="0.1"
+          style="width: 90%"
+          id="lineHeight"
+        />
+        <br />
+        <span id="lineHeightValue">1.5</span>
+      </div>
       <div>
         Font size of quotations <br />
         <input
@@ -53,38 +78,6 @@
       </div>
 
       <div>
-        Line height of text <br />
-        <input
-          type="range"
-          min="1"
-          max="2.5"
-          value="1.5"
-          step="0.1"
-          style="width: 90%"
-          id="lineHeight"
-        />
-        <br />
-        <span id="lineHeightValue">1.5</span>
-      </div>
-      <div>
-        Line heights, false = 0, true = 1 <br />
-        <label
-          ><input
-            type="checkbox"
-            id="leadingLineHeight"
-            checked
-          />Leading</label
-        >
-        <label
-          ><input
-            type="checkbox"
-            id="trailingLineHeight"
-            checked
-          />Trailing</label
-        >
-        <button id="unsetLineHeight">Unset lineheights</button>
-      </div>
-      <div>
         Change font <br />
         <select id="changeFont">
           <option value="inherit">None</option>
@@ -93,8 +86,8 @@
         </select>
       </div>
       <div>
-        Leading Vertical align <br />
-        <select id="changeLVAlign">
+        Vertical align <br />
+        <select id="changeVAlign">
           <option>unset</option>
           <option>baseline</option>
           <option>sub</option>
@@ -107,91 +100,10 @@
         </select>
         <br />
         Or
-        <input
-          id="lva"
-          type="number"
-          step="0.1"
-          value="0"
-          style="width: 50px"
-        />
+        <input id="va" type="number" step="0.1" value="0" style="width: 50px" />
         rem
       </div>
-      <div>
-        Trailing Vertical align <br />
-        <select id="changeTVAlign">
-          <option>unset</option>
-          <option>baseline</option>
-          <option>sub</option>
-          <option>super</option>
-          <option>text-top</option>
-          <option>text-bottom</option>
-          <option>middle</option>
-          <option>top</option>
-          <option>bottom</option>
-        </select>
-        <br />
-        Or
-        <input
-          id="tva"
-          type="number"
-          step="0.1"
-          value="0"
-          style="width: 50px"
-        />
-        rem
-      </div>
-      <div>
-        Leading left position <br />
-        <input
-          id="lleft"
-          type="number"
-          step="0.1"
-          value="0"
-          style="width: 50px"
-        />
-        rem
-      </div>
-      <div>
-        Leading top position <br />
-        <input
-          id="ltop"
-          type="number"
-          step="0.1"
-          value="0"
-          style="width: 50px"
-        />
-        rem
-      </div>
-      <div>
-        Leading Transform origin, left <br />
-        <select id="changeHOrigin">
-          <option>unset</option>
-          <option>left</option>
-          <option>center</option>
-          <option>right</option>
-        </select>
-        <br />
-        Or
-        <input id="ho" type="number" step="0.1" value="0" style="width: 50px" />
-        rem
-        <br />
-        Or <input id="perho" type="number" value="0" style="width: 50px" /> %
-      </div>
-      <div>
-        Leading transform origin, top
-        <select id="changeVOrigin">
-          <option>unset</option>
-          <option>top</option>
-          <option>center</option>
-          <option>bottom</option>
-        </select>
-        <br />
-        Or
-        <input id="vo" type="number" step="0.1" value="0" style="width: 50px" />
-        rem
-        <br />
-        Or <input id="pervo" type="number" value="0" style="width: 50px" /> %
-      </div>
+
       <div>
         <label><input type="checkbox" id="toggleCite" />Toggle citations</label>
       </div>
@@ -201,130 +113,45 @@
       </div>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col">
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-            id non sit ex debitis incidunt veritatis. Tenetur excepturi officiis
-            asperiores harum recusandae tempora labore, iure, amet in magni
-            pariatur aperiam?
-          </p>
-        </div>
-        <div class="col">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-            accusamus, labore, omnis provident molestiae exercitationem soluta
-            optio beatae ut dicta, perspiciatis officiis illo qui quibusdam
-            unde! Fugit praesentium accusamus consectetur.
-          </p>
-        </div>
-      </div>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae id
+        non sit ex debitis incidunt veritatis. Tenetur excepturi officiis
+        asperiores harum recusandae tempora labore, iure, amet in magni pariatur
+        aperiam?
+      </p>
+
       <hr />
-      <div class="row">
-        <div class="col classic classicA fontSize">
-          <h4>Classic option A: text indent</h4>
-          <h5>Font size scaling</h5>
-          <div>
-            <blockquote>
-              Do not leave space after blockquote element Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Tempore amet maiores, possimus
-              sed eaque ratione suscipit eum? Sunt nesciunt ab aut voluptatum
-              dolorum cumque placeat blanditiis voluptate esse eum.
-              <strong>Harum!</strong>
-            </blockquote>
-            <cite
-              >Archimedes of Syracuse, a Greek mathematician, physicist,
-              engineer, astronomer, and inventor</cite
-            >
-          </div>
-          <div>
-            <blockquote>Lorem ipsum dolor</blockquote>
-            <cite>Archimedes of Syracuse</cite>
-          </div>
-        </div>
+      <div class="quoted">
+        <blockquote>
+          Do not leave space after blockquote element Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Tempore amet maiores, possimus sed eaque
+          ratione suscipit eum? Sunt nesciunt ab aut voluptatum dolorum cumque
+          placeat blanditiis voluptate esse eum.
+          <strong>Harum!</strong>
+        </blockquote>
+        <cite
+          >Archimedes of Syracuse, a Greek mathematician, physicist, engineer,
+          astronomer, and inventor</cite
+        >
+      </div>
+      <div class="quoted">
+        <blockquote>Lorem ipsum dolor</blockquote>
+        <cite>Archimedes of Syracuse</cite>
+      </div>
 
-        <div class="col classic classicB fontSize">
-          <h4>Classic option B: positioning</h4>
-          <h5>Font size scaling</h5>
-
-          <div>
-            <blockquote>
-              Do not leave space after blockquote element Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Tempore amet maiores, possimus
-              sed eaque ratione sus gdolorum cumqueg gplaceat blanditiis
-              voluptate esse eum. Harum!
-            </blockquote>
-            <cite
-              >Archimedes of Syracuse, a Greek mathematician, physicist,
-              engineer, astronomer, and inventor</cite
-            >
-          </div>
-          <div>
-            <blockquote>Lorem ipsum dolor</blockquote>
-            <cite>Archimedes of Syracuse</cite>
-          </div>
-        </div>
-
-        <hr style="width: 100%" />
-
-        <div class="col classic classicA scale">
-          <h5><del>Transform and origin</del></h5>
-          <div>
-            <blockquote>
-              Do not leave space after blockquote element Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Tempore amet maiores, possimus
-              sed eaque ratione suscipit eum? Sunt nesciunt ab aut voluptatum
-              dolorum cumque placeat blanditiis voluptate esse eum. Harum d i i
-            </blockquote>
-            <cite
-              >Archimedes of Syracuse, a Greek mathematician, physicist,
-              engineer, astronomer, and inventor</cite
-            >
-          </div>
-          <div>
-            <blockquote>Lorem ipsum dolor</blockquote>
-            <cite>Archimedes of Syracuse</cite>
-          </div>
-        </div>
-        <div class="col classic classicB scale">
-          <h5><del>Transform and origin</del></h5>
-          <div>
-            <blockquote>
-              Do not leave space after blockquote element Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Tempore amet maiores, possimus
-              sed eaque ratione suscipit eum? Sunt nesciunt ab aut voluptatum
-              dolorum cumque.
-            </blockquote>
-            <cite
-              >Archimedes of Syracuse, a Greek mathematician, physicist,
-              engineer, astronomer, and inventor</cite
-            >
-          </div>
-          <div>
-            <blockquote>Lorem ipsum dolor</blockquote>
-            <cite>Archimedes of Syracuse</cite>
-          </div>
-        </div>
-
-        <hr style="width: 100%" />
-
-        <div class="col classic classicA fontSize">
-          <h6>Testing ascenders and descenders</h6>
-          <div>
-            <blockquote>
-						gjqpy gjqpy gjqpy gjqpy gjqpy gjqpy gjqpy gjqpy 
-						bdfhijklt bdfhijklt bdfhijklt bdfhijkltbdfhijklt 
-            </blockquote>
-            <cite
-              >Archimedes of Syracuse, a Greek mathematician, physicist,
-              engineer, astronomer, and inventor</cite
-            >
-          </div>
-          <div>
-            <blockquote>Lorem ipsum dolor</blockquote>
-            <cite>Archimedes of Syracuse</cite>
-          </div>
-        </div>
+      <div class="quoted vanity">
+        <blockquote>
+          gjqpy gjqpy gjqpy gjqpy gjqpy gjqpy gjqpy gjqpy bdfhijklt bdfhijklt
+          bdfhijklt bdfhijkltbdfhijklt
+        </blockquote>
+        <cite
+          >Archimedes of Syracuse, a Greek mathematician, physicist, engineer,
+          astronomer, and inventor</cite
+        >
+      </div>
+      <div class="quoted vanity">
+        <blockquote>Lorem ipsum dolor</blockquote>
+        <cite>Archimedes of Syracuse</cite>
       </div>
     </div>
   </body>

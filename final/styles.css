@@ -1,16 +1,8 @@
 :root {
   --line-height: 1.5;
   --font-size: 100%;
-  --leading-line-height: unset;
-  --trailing-line-height: unset;
-  --leading-vertical-align: unset;
-  --trailing-vertical-align: unset;
+  --vertical-align: unset;
   --leading-indent: 1rem;
-  --leading-left: 0;
-  --leading-top: 0;
-  --scale: 1;
-  --leading-vorigin: unset;
-  --leading-horigin: unset;
   --font-family: inherit;
 }
 
@@ -26,164 +18,17 @@ body {
   font-family: 'Bitter', serif;
   font-size: 1.4rem;
   padding-bottom: 5rem;
-  counter-reset: method;
-
 }
 
 .container {
-  max-width: 700px;
+  padding: 5rem;
+  max-width: 500px;
   margin: 0 auto;
-}
-
-h5:before {
-  counter-increment: method;
-  content: counter(method) ": ";
-}
-
-.row {
-
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.col {
-  flex-basis: 47%;
-
+  font-size: var(--body-font-size, 1.4rem);
 }
 
 div {
   margin: 2rem 0;
-}
-
-.classic blockquote:before,
-.classic blockquote:after {
-  font-family: var(--font-family, inherit);
-}
-
-.classic {
-  line-height: var(--line-height, 1.5);
-}
-
-.classic blockquote {
-  margin: 0;
-  position: relative;
-}
-
-
-.classic blockquote:before {
-  content: '\201C';
-  line-height: var(--leading-line-height, unset);
-  vertical-align: var(--leading-vertical-align, unset);
-}
-
-.classic blockquote:after {
-  content: '\201D';
-  line-height: var(--trailing-line-height, unset);
-  vertical-align: var(--trailing-vertical-align, unset);
-  font-size: var(--font-size, 100%);
-  /* margin-left: 0; */
-}
-
-
-
-/* solution with text indent */
-.classicA blockquote {
-  margin-left: var(--leading-indent, 1rem);
-}
-
-.classicA blockquote:before {
-  text-indent: calc(var(--leading-indent, 1rem) * -1);
-  display: inline-block;
-}
-
-/* solution with position */
-.classicB blockquote {
-  padding-left: var(--leading-indent, 1rem);
-}
-
-.classicB blockquote:before {
-  position: absolute;
-  left: var(--leading-left, 0);
-  top: var(--leading-top, 0);
-}
-
-
-/* scale fontsize */
-.fontSize blockquote:before {
-  font-size: var(--font-size, 100%);
-}
-
-
-/* scale by transform */
-.scale blockquote:before {
-  transform: scale(var(--scale, 1));
-  transform-origin: var(--leading-horigin, unset) var(--leading-vorigin, unset);
-}
-
-/* remove this */
-/* .fontSize blockquote:after {
-  font-size: var(--font-size, 100%);
-} */
-
-/* and this */
-/* .scale blockquote:after {
-  transform: scale(var(--scale, 1));
-  transform-origin: var(--ho, unset) var(--vo, unset);
-  display: inline-block;
-} */
-
-
-
-/* to test with cite */
-cite {
-  display: var(--toggle-cite, none);
-  margin-top: 1rem;
-  font-style: italic;
-
-}
-
-cite:before {
-  content: '\2014';
-  font-family: var(--font-family, inherit);
-}
-
-.classic cite {
-  margin-left: var(--leading-indent, 1rem);
-}
-
-
-.makevanity blockquote {
-  font-size: 150%;
-  font-style: italic;
-  margin-left: 0 !important;
-  padding-left: 0;
-}
-
-.makevanity blockquote:before,
-.makevanity blockquote:after {
-  font-style: normal;
-}
-
-.makevanity .classicB blockquote:before {
-  margin-left: calc(var(--leading-indent, 1rem) * -1);
-}
-
-.makevanity cite {
-  margin-left: 0;
-  font-size: 120%;
-  font-style: normal;
-}
-
-
-q:before {
-  content: '\2018';
-  font-family: var(--font-family, inherit);
-}
-
-q:after {
-  content: '\2019';
-  font-family: var(--font-family, inherit);
 }
 
 #tools {
@@ -212,4 +57,78 @@ q:after {
   font-size: 150%;
   z-index: 1100;
   cursor: pointer;
+}
+
+/* here is what matters */
+/*The best option*/
+.quoted {
+  --font-size: 150%;
+  --vertical-align: -0.4rem;
+  --opening-indent: 0.9rem;
+}
+.quoted blockquote {
+  margin: 0;
+  position: relative;
+  margin-left: var(--opening-indent, 1rem);
+}
+.quoted blockquote:before,
+.quoted blockquote:after {
+  font-family: var(--quote-font);
+  line-height: 0;
+  vertical-align: var(--vertical-align, unset);
+  font-size: var(--font-size, 100%);
+}
+
+.quoted blockquote:before {
+  content: '\201C';
+  text-indent: calc(var(--opening-indent, 1rem) * -1);
+  display: inline-block;
+}
+
+.quoted blockquote:after {
+  content: '\201D';
+}
+.quoted cite {
+  display: block;
+  margin-top: 1rem;
+  font-style: italic;
+  margin-left: var(--opening-indent, 1rem);
+}
+.quoted cite:before {
+  content: '\2014';
+  font-family: var(--quote-font);
+}
+.quoted cite:after {
+  margin-left: var(--opening-indent, 1rem);
+}
+
+.vanity {
+  --opening-indent: 1.3rem;
+
+  line-height: calc(var(--line-height) * 1.2);
+}
+.vanity blockquote {
+  font-size: 150%;
+  font-style: italic;
+  margin-left: 0 !important;
+  padding-left: 0;
+}
+.vanity blockquote:before,
+.vanity blockquote:after {
+  font-style: normal;
+}
+
+.vanity blockquote cite {
+  margin-left: 0;
+  font-size: 120%;
+  font-style: normal;
+}
+
+q:before {
+  content: '\2018';
+  font-family: var(--quote-font);
+}
+q:after {
+  content: '\2019';
+  font-family: var(--quote-font);
 }
