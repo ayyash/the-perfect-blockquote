@@ -6,12 +6,16 @@ html {
 }
 
 .container {
+  padding: 5rem;
   max-width: 500px;
   margin: 0 auto;
 }
+
 div {
-  margin-block: 3rem;
+  margin: 2rem 0;
 }
+
+// here is what matters
 :root {
 	--quote-font: 'Newsreader';
 	--line-height: 1.3;
@@ -35,9 +39,8 @@ body {
 	--vertical-align: -0.4rem;
 	--opening-indent: 0.9rem;
 
-	// line-height is same as body
 
-	// kill LESS bug
+	// kill LESS bug, must include a prop so that LESS works
 	color: inherit;
 
 	blockquote {
@@ -72,19 +75,17 @@ body {
 			content: '\2014';
 			font-family: var(--quote-font);
 		}
-		&:after {
-			margin-left: var(--opening-indent, 1rem);
-		}
 	}
 }
 
 .vanity {
   // because of increase in blockquote size, i need more indentation
   --opening-indent: 1.3rem;
+	// --vertical-align: unset;
 
 	// this is optional and not quite recomendded
 	// it gives more fine tuning for the pull quote
-	line-height: calc(var(--line-height) * 1.2);
+	// line-height: calc(var(--line-height) * 1.2);
 
   // kill a bug in less
   color: inherit;

@@ -102,9 +102,6 @@ div {
   content: '\2014';
   font-family: var(--quote-font);
 }
-.quoted cite:after {
-  margin-left: var(--opening-indent, 1rem);
-}
 
 .vanity {
   /* this is tempting but not so practical */
