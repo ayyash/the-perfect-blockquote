@@ -1,0 +1,110 @@
+html {
+  font-size: 62.5%;
+}
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 5rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+div {
+  margin: 2rem 0;
+}
+
+// here is what matters
+:root {
+	--line-height: 1.7;
+
+	// kill a LESS bug
+	color: inherit;
+}
+
+body {
+	
+  font-family: 'Signika', sans-serif;
+  font-size: 1.6rem;
+  line-height: var(--line-height);
+
+}
+
+/*The best option*/
+.quoted {
+
+	--font-size: 150%;
+	--vertical-align: -0.5rem;
+	--opening-indent: 1rem;
+
+
+	// kill LESS bug, must include a prop so that LESS works
+	color: inherit;
+
+	blockquote {
+		margin: 0;
+		position: relative;
+		margin-left: var(--opening-indent, 1rem);
+
+    &:before, &:after {
+      
+			line-height:0;
+			vertical-align: var(--vertical-align, unset);
+			font-size: var(--font-size, 100%);
+    }
+		&:before {
+			content: '\201C';
+			text-indent: calc(var(--opening-indent, 1rem) * -1);
+			display: inline-block;
+			
+		}
+
+		&:after {
+			content: '\201D';
+		}
+	}
+
+	cite {
+		display: block;
+		margin-top: 1rem;
+		margin-left: var(--opening-indent, 1rem);
+		&:before {
+			content: '\2014';
+			
+		}
+	}
+}
+
+.vanity {
+  // because of increase in blockquote size, i need more indentation
+  --opening-indent: 1.5rem;
+	// --vertical-align: -0.3rem;
+
+	// this is optional and not quite recomendded
+	// it gives more fine tuning for the pull quote
+	line-height: calc(var(--line-height) * 0.7);
+
+  // kill a bug in less
+  color: inherit;
+
+  blockquote {
+		font-size: 150%;
+		margin-left: 0!important;
+		padding-left: 0;
+	}
+	
+	cite {
+		margin-left: 0;
+		font-size: 120%;
+	}	
+}
+
+q:before {
+	content: '\2018';
+  
+}
+q:after {
+	content: '\2019';
+  
+}

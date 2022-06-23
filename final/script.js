@@ -48,6 +48,10 @@ function init() {
     document.documentElement.style.setProperty('--quote-font', e.target.value);
 
   };
+  document.getElementById('bodyFont').onchange = (e) => {
+    document.documentElement.style.setProperty('--body-font', e.target.value);
+
+  };
 
   document.getElementById('changeVAlign').onchange = (e) => {
     quoteRule.style.setProperty('--vertical-align', e.target.value);
